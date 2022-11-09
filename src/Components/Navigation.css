@@ -1,0 +1,35 @@
+nav {
+  background-color: transparent;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 15px;
+}
+
+.header img {
+  float: left;
+  width: 220px;
+  height: 100px;
+}
+
+ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  font-size: 150%;
+}
+
+ul li a {
+  margin: 0 10px;
+  color: #2c405e;
+  position: relative;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  color: rgb(147, 161, 108);
+  cursor: pointer;
+}
