@@ -3,11 +3,13 @@ import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import Login from './Screens/Login'
+import Home from './Screens/Home'
 import Books from './Screens/Books'
 import Navigation from "./Components/Navigation";
 import instance from './api/book2up';
 import store from './Store/store'
 import {setBooks} from './Store/slices/booksSlice'
+
 function App() {
   const { token } = useSelector(state => state.auth);
   useEffect(()=>{
@@ -30,7 +32,8 @@ function App() {
     return (
       <div className="">
           <Routes>
-            <Route path="*" element={<Login />} />
+            <Route path="*" element={<Home />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
       </div>
     );

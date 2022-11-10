@@ -3,7 +3,9 @@ import "./Login.css";
 import instance from '../api/book2up'
 import { useNavigate } from 'react-router-dom';
 import store from '../Store/store'
-import {setToken} from '../Store/slices/authSlice'
+import { setToken } from '../Store/slices/authSlice'
+import { Link } from 'react-router-dom';
+
 const Login = () => {
   const [formInfo,setFormInfo] = useState({user:'', password:''})
   const navigate = useNavigate();
@@ -49,7 +51,7 @@ const Login = () => {
             />
           </div>
           <button className="button" onClick={submit}>Entrar</button>
-          <button>Registrarse</button>
+          <Link to="/"><button>Registrarse</button></Link>
       </header>
       
     </>
