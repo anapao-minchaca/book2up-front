@@ -1,0 +1,16 @@
+.details-area{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.details-area .left-container{
+    margin-right: 10px;
+}
+.details-area .left-container img{
+    width:200px;
+}
+.details-area .right-container{
+   
+}

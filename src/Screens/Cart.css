@@ -1,0 +1,17 @@
+.cart-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.order-area{
+    margin:10px;
+}
+.order-area .order-item{
+  
+}
+.payment{
+    display: flex;
+    justify-content: space-between;
+}

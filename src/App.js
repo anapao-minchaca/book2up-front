@@ -9,7 +9,9 @@ import Navigation from "./Components/Navigation";
 import instance from './api/book2up';
 import store from './Store/store'
 import {setBooks} from './Store/slices/booksSlice'
-
+import {setCart} from './Store/slices/cartSlice'
+import BookDetails from './Screens/BookDetails';
+import Cart from './Screens/Cart';
 function App() {
   const { token } = useSelector(state => state.auth);
   useEffect(()=>{
@@ -17,14 +19,15 @@ function App() {
         try{
           const response = await instance.get('/bookdata')
           store.dispatch(setBooks(response.data))
+          const cart = await instance.get('/cartdata')
+          store.dispatch(setCart(cart.data))
         }
         catch(e){
           console.error(e)
         }
       }
       if(token)
-      {getData()}
-      
+      {getData()}  
      
   },[token])
   if(!token)
@@ -44,6 +47,8 @@ function App() {
           <Navigation/>
           <Routes>
             <Route path="/" element={<Books />} />
+            <Route exact path="/book/:id" element={<BookDetails />} />
+            <Route exact path="/cart" element={<Cart />} />
           </Routes>
       </div>
     )

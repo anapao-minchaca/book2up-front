@@ -9,15 +9,14 @@ const logOut = () => {
 }
   return (
     <nav>
-      <div class="header">
+      <div className="header">
         <a href="/"><img src="https://github.com/anapao-minchaca/Book2Up/blob/main/frontend/img/logo.png?raw=true" alt="book2uplogo"/></a>
       </div>
 
       <ul>
-        <li><Link to="/">Incio</Link></li>
-         <li><a href="https://github.com/anapao-minchaca">Libros</a></li>
-         <li><a href="https://github.com/anapao-minchaca">Carrito</a></li>
-         <li><button onClick={logOut}>Cerrar Sesion</button></li>
+        <li key="libros"><Link to="/">Libros</Link></li>
+         <li key="carrito"><Link to="/cart">Carrito</Link></li>
+         <li key="LogOut"><button onClick={logOut}>Cerrar Sesion</button></li>
       </ul>
     </nav>
   );
