@@ -27,33 +27,48 @@ const Login = () => {
   }
   return (
     <>
-      <header className="login-header">
-          <h1>Iniciar Sesión</h1>
+    <div className="container">
+      <div className ="login__content">
+        <img src="https://raw.githubusercontent.com/anapao-minchaca/Book2Up/main/frontend/img/bg.png" alt="login" className="login__img"></img>
+          {/* <header className="login-header"> */}
+              <div className="login__form">
 
-          <div className="elementoForma">
-            <label>Usuario:</label>
-            <input
-              type="text"
-              placeholder="Escribe tu usuario"
-              name="user"
-              onChange={changeForm}
-              value = {formInfo.user}
-            />
-          </div>
-          <div className="elementoForma">
-            <label>Contraseña:</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Escribe tu contraseña"
-              value = {formInfo.password}
-              onChange={changeForm}
-            />
-          </div>
-          <button className="button" onClick={submit}>Entrar</button>
-          <Link to="/"><button>Registrarse</button></Link>
-      </header>
-      
+                <h1 className="login__title"><span>Book2Up</span></h1>
+                <p className="login__description">
+                  Bienvenido a Book2Up! Inicia sesión para continuar.
+                </p>
+
+                <div className="login__inputs">
+                  <label className="login__label">Usuario:</label>
+                  <input
+                    type="text"
+                    placeholder="Escribe tu usuario"
+                    name="user"
+                    onChange={changeForm}
+                    value = {formInfo.user}
+                    required
+                    className="login__input"
+                  />
+                  <label className="login__label">Contraseña:</label>
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Escribe tu contraseña"
+                    value = {formInfo.password}
+                    onChange={changeForm}
+                    required
+                    className="login__input"
+                  />
+                </div>
+
+                <div className="login__buttons">
+                  <button className="login__button" onClick={submit}>Entrar</button>
+                  <Link to="/"><button className="login__button login__button-ghost">Registrarse</button></Link>
+                </div>
+              </div>
+          {/* </header> */}
+      </div>
+    </div>  
     </>
   );
 };

@@ -1,12 +1,7 @@
-* {
-  font-family: 'Courier New', Courier, monospace;
-}
-
 body {
   background-color: #efefef;
   color: #2c405e;
   margin: 0;
-  font-family: "Roboto";
 }
 
 nav {
