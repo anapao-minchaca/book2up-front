@@ -63,7 +63,7 @@ const Login = () => {
 
                 <div className="login__buttons">
                   <button className="login__button" onClick={submit}>Entrar</button>
-                  <Link to="/"><button className="login__button login__button-ghost">Registrarse</button></Link>
+                  <Link to="/signup"><button className="login__button login__button-ghost">Registrarse</button></Link>
                 </div>
               </div>
           {/* </header> */}

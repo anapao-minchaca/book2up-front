@@ -4,7 +4,13 @@ const retrieveCartFromLocalStorage = () => {
 };
 
 const saveCartToLocalStorage = (cart) => {
-    window.localStorage.setItem('cart', JSON.stringify(cart));
+    if(cart === null){
+        window.localStorage.setItem('cart', null);
+    }
+    else{
+        window.localStorage.setItem('cart', JSON.stringify(cart));
+    }
+   
 };
 
 const removeCartFromLocalStorage = () => {

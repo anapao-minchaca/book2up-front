@@ -1,10 +1,7 @@
-import React , {useEffect} from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import "./Cart.css";
 const Cart = () => {
-
-  const cart  =  JSON.parse(window.localStorage.getItem('cart'));
-  
+  const cart  =  window.localStorage.getItem('cart')!=="null"?JSON.stringify(window.localStorage.getItem('cart')):null
   const renderCart = () => {
     return cart.map((item) => {
       return (
