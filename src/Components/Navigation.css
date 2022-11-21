@@ -33,3 +33,7 @@ ul li a:hover {
   color: rgb(147, 161, 108);
   cursor: pointer;
 }
+
+.logOutButton{
+  cursor: pointer;
+}

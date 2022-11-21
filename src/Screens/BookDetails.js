@@ -1,16 +1,16 @@
-import React, { useState,useEffect } from "react";
+import React, {useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./BookDetails.css";
 const BookDetails = () => {
   const { id } = useParams();
-  const book = useSelector((state) =>state.books.find((book) => book.SKU === id))?? window.localStorage.getItem('book');
+  const book = useSelector((state) =>state.books.find((book) => book.SKU === id))?? JSON.parse(window.localStorage.getItem('book'));
   useEffect(() => {
     window.localStorage.setItem('book', JSON.stringify(book));
-  }, [id]);
+  }, [id,book]);
 
   const comprarLibro = async (SKU) => {
-    console.log(SKU);
+    console.log(SKU)
   };
   return (
     <div className="details-area">

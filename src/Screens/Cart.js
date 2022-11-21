@@ -1,7 +1,7 @@
 import React from "react";
 import "./Cart.css";
 const Cart = () => {
-  const cart  =  window.localStorage.getItem('cart')!=="null"?JSON.stringify(window.localStorage.getItem('cart')):null
+  const cart  =  window.localStorage.getItem('cart')!=="null"?JSON.parse(window.localStorage.getItem('cart')):null
   const renderCart = () => {
     return cart.map((item) => {
       return (
