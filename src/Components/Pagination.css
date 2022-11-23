@@ -1,0 +1,10 @@
+.pagination-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.index-number{
+    color:red;
+    margin:3px;
+    cursor: pointer;
+}
