@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 const retrieveCartFromLocalStorage = () => {
-    return  window.localStorage.getItem('cart') ?? null;
+    return  window.localStorage.getItem('cart')==="null"?null: JSON.parse(window.localStorage.getItem('cart'));
 };
 
 const saveCartToLocalStorage = (cart) => {

@@ -10,12 +10,14 @@ import instance from "./api/book2up";
 import store from "./Store/store";
 import { setBooks } from "./Store/slices/booksSlice";
 import { setCart } from "./Store/slices/cartSlice";
+import {setLocalCart} from "./Store/slices/localCartSlice" 
 import BookDetails from "./Screens/BookDetails";
 import Cart from "./Screens/Cart";
 import LoadingSpinner from "./Components/LoadingSpinner";
 import SignUp from "./Screens/SignUp"
 function App() {
   const { token } = useSelector((state) => state.auth);
+  const localCart= useSelector ((state)=>state.localCart.cart)
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const getData = async () => {
@@ -25,6 +27,10 @@ function App() {
         store.dispatch(setBooks(response.data));
         const cart = await instance.get("/cartdata");
         store.dispatch(setCart(cart.data.length===0? null: cart.data));
+        if(!localCart){
+          store.dispatch(setLocalCart(cart.data.length===0? null: cart.data))
+        }
+        
       } catch (e) {
         console.error(e);
       }

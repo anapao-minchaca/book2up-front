@@ -57,7 +57,12 @@
 .button-holder .buttons {
   margin: 3px;
 }
+.button-holder .buttons .comprar-boton{
 
+}
+.button-holder .buttons .en-carrito{
+    background-color: skyblue;
+}
 @media only screen and (max-width: 830px) {
   .books-area {
     justify-content: center;

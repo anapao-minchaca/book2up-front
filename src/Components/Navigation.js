@@ -4,10 +4,12 @@ import store from '../Store/store'
 import { Link } from 'react-router-dom';
 import {removeToken} from '../Store/slices/authSlice'
 import {removeCart} from '../Store/slices/cartSlice'
+import {removeLocalCart} from '../Store/slices/localCartSlice'
 const Navigation = () => {
 const logOut = () => {
     store.dispatch(removeToken())
     store.dispatch(removeCart())
+    store.dispatch(removeLocalCart())
 }
   return (
     <nav>

@@ -2,13 +2,23 @@ import React, {useState} from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Pagination from "../Components/Pagination";
+import store from '../Store/store'
+import {setLocalCart} from '../Store/slices/localCartSlice'
 import "./Books.css";
 const Books = () => {
   const books = useSelector((state) => state.books);
+  const localCart =useSelector((state) => state.localCart)
+  const localCartItems = localCart.cart
   const [currentPage, setCurrentPage] = useState(1)
   const booksPerPage = 12
   const comprarLibro = (SKU) => {
-    console.log(SKU);
+    if(localCartItems ===null){
+      store.dispatch(setLocalCart([{libro:SKU,cantidad:1}]))
+    }
+    else{
+      store.dispatch(setLocalCart([...localCartItems, {libro:SKU, cantidad:1}]))
+    }
+    alert("Libro agregado al carrito")
   };
   const indexOfLastPost = currentPage * booksPerPage
   const indexofFirstPost = indexOfLastPost - booksPerPage
@@ -18,6 +28,7 @@ const Books = () => {
   }
   const generateBooks = () => {
     return currentPosts.map((book) => {
+      const disable = localCartItems? localCartItems.some( cart => cart['libro'] === book.SKU):false
       return (
         <div className="card" key={book.SKU}>
           <img src={book.img} alt={book.titulo} className="image" />
@@ -36,9 +47,10 @@ const Books = () => {
             <div className="buttons">
               <button
                 onClick={() => comprarLibro(book.SKU)}
-                className="comprar-buton"
+                disabled={disable}
+                className={disable?"en-carrito": "comprar-boton"}
               >
-                Comprar
+                {disable?"En carrito":"Comprar"}
               </button>
             </div>
           </div>

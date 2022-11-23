@@ -1,16 +1,27 @@
 import React, {useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import store from '../Store/store'
+import {setLocalCart} from '../Store/slices/localCartSlice'
 import "./BookDetails.css";
 const BookDetails = () => {
   const { id } = useParams();
   const book = useSelector((state) =>state.books.find((book) => book.SKU === id))?? JSON.parse(window.localStorage.getItem('book'));
+  const localCart =useSelector((state) => state.localCart)
+  const localCartItems = localCart.cart
+  const disable = localCartItems? localCartItems.some( cart => cart['libro'] === book.SKU):false
   useEffect(() => {
     window.localStorage.setItem('book', JSON.stringify(book));
   }, [id,book]);
 
   const comprarLibro = async (SKU) => {
-    console.log(SKU)
+    if(localCartItems ===null){
+      store.dispatch(setLocalCart([{libro:SKU,cantidad:1}]))
+    }
+    else{
+      store.dispatch(setLocalCart([...localCartItems, {libro:SKU, cantidad:1}]))
+    }
+    alert("Libro agregado al carrito")
   };
   return (
     <div className="details-area">
@@ -25,7 +36,7 @@ const BookDetails = () => {
           <p>Precio: {`$${book.precio}`}</p>
         </div>
         <div>
-          <button onClick={() => comprarLibro(book.SKU)}>Comprar</button>
+          <button onClick={() => comprarLibro(book.SKU)}  disabled={disable}>{disable?"En carrito":"Comprar"}</button>
         </div>
       </div>
     </div>
