@@ -13,10 +13,10 @@ const Books = () => {
   const booksPerPage = 12
   const comprarLibro = (SKU) => {
     if(localCartItems ===null){
-      store.dispatch(setLocalCart([{libro:SKU,cantidad:1}]))
+      store.dispatch(setLocalCart({[SKU]:1}))
     }
     else{
-      store.dispatch(setLocalCart([...localCartItems, {libro:SKU, cantidad:1}]))
+      store.dispatch(setLocalCart({...localCartItems, [SKU]:1}))
     }
     alert("Libro agregado al carrito")
   };
@@ -28,7 +28,7 @@ const Books = () => {
   }
   const generateBooks = () => {
     return currentPosts.map((book) => {
-      const disable = localCartItems? localCartItems.some( cart => cart['libro'] === book.SKU):false
+      const disable = localCartItems? localCartItems[book.SKU]:false
       return (
         <div className="card" key={book.SKU}>
           <img src={book.img} alt={book.titulo} className="image" />
@@ -40,8 +40,7 @@ const Books = () => {
           <div className="button-holder">
             <div className="buttons">
               <Link to={`/book/${book.SKU}`}>
-                {" "}
-                <button className="comprar-buton">Detalles</button>{" "}
+                <button className="comprar-buton">Detalles</button>
               </Link>
             </div>
             <div className="buttons">

@@ -9,17 +9,17 @@ const BookDetails = () => {
   const book = useSelector((state) =>state.books.find((book) => book.SKU === id))?? JSON.parse(window.localStorage.getItem('book'));
   const localCart =useSelector((state) => state.localCart)
   const localCartItems = localCart.cart
-  const disable = localCartItems? localCartItems.some( cart => cart['libro'] === book.SKU):false
+  const disable = localCartItems? localCartItems[book.SKU]:false
   useEffect(() => {
     window.localStorage.setItem('book', JSON.stringify(book));
   }, [id,book]);
 
   const comprarLibro = async (SKU) => {
     if(localCartItems ===null){
-      store.dispatch(setLocalCart([{libro:SKU,cantidad:1}]))
+      store.dispatch(setLocalCart({[SKU]:1}))
     }
     else{
-      store.dispatch(setLocalCart([...localCartItems, {libro:SKU, cantidad:1}]))
+      store.dispatch(setLocalCart({...localCartItems, [SKU]:1}))
     }
     alert("Libro agregado al carrito")
   };
