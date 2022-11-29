@@ -1,0 +1,21 @@
+.history-container{
+    width: 100%;
+}
+.history-container .single-cart{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+} 
+.book{
+    display: flex; 
+}
+.book .item{
+    margin: 5px 
+}
+.no-history{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}

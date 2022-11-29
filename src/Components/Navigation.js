@@ -20,6 +20,7 @@ const logOut = () => {
       <ul>
         <li key="libros"><Link to="/">Libros</Link></li>
          <li key="carrito"><Link to="/cart">Carrito</Link></li>
+         <li key="historial"><Link to="/history">Historial</Link></li>
          <li key="LogOut"><button onClick={logOut} className="logOutButton">Cerrar Sesion</button></li>
       </ul>
     </nav>

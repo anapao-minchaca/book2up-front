@@ -10,9 +10,11 @@ import instance from "./api/book2up";
 import store from "./Store/store";
 import { setBooks } from "./Store/slices/booksSlice";
 import { setCart } from "./Store/slices/cartSlice";
+import { setHistory } from "./Store/slices/historySlice";
 import {setLocalCart} from "./Store/slices/localCartSlice" 
 import BookDetails from "./Screens/BookDetails";
 import Cart from "./Screens/Cart";
+import History from './Screens/History'
 import LoadingSpinner from "./Components/LoadingSpinner";
 import SignUp from "./Screens/SignUp"
 function App() {
@@ -27,6 +29,8 @@ function App() {
         store.dispatch(setBooks(response.data));
         const cart = await instance.get("/cartdata");
         store.dispatch(setCart(cart.data.length===0? null: cart.data));
+        const purchaseHistory = await instance.get("/purchase-history");
+        store.dispatch(setHistory(purchaseHistory.data));
         if(!localCart){
           store.dispatch(setLocalCart(cart.data.length===0? null: cart.data))
         }
@@ -62,6 +66,7 @@ function App() {
               <Route exact path="/" element={<Books />} />
               <Route exact path="/book/:id" element={<BookDetails />} />
               <Route exact path="/cart" element={<Cart />} />
+              <Route exact path="/history" element={<History />} />
             </Routes>
           </>
         )}
