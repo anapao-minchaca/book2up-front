@@ -7,15 +7,17 @@ const History = () => {
   const mapObject = (cart) => {
     let elements = [];
 
-    const { productos } = cart;
+    const { productos ,total} = cart;
     for (let producto in productos) {
       let libro = books.find((book) => book.SKU === producto);
-      elements.push({ ...libro, cantidad: productos[producto] });
+      if(libro){
+        elements.push({ ...libro, cantidad: productos[producto] });
+      }
+      else{
+        elements.push({ titulo:producto, cantidad:1 });
+      }
     }
-    const purchaseTotal = elements.reduce((valorAnterior, valorActual) => {
-      return valorAnterior + valorActual.precio * valorActual.cantidad;
-    }, 0);
-    elements.push(purchaseTotal);
+    elements.push(total);
     return elements;
   };
 
