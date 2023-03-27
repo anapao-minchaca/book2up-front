@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import LoadingSpinner from "./LoadingSpinner";
 import store from "../Store/store";
-import instance from '../api/book2up'
-import { useNavigate } from 'react-router-dom';
-import { setLocalCart } from "../Store/slices/localCartSlice";
-import {setHistory} from '../Store/slices/historySlice'
+import instance from "../api/book2up";
+import { useNavigate } from "react-router-dom";
+import { setCart } from "../Store/slices/cartSlice";
+import { setHistory } from "../Store/slices/historySlice";
 const TableInventory = ({ elementos }) => {
   const [quantity, setQuantity] = useState(null);
   const navigate = useNavigate();
@@ -18,17 +18,16 @@ const TableInventory = ({ elementos }) => {
     });
     setQuantity(object);
     setLoading(false);
-  }, []);
+  }, [elementos]);
 
   const changeValue = (event) => {
     const { name, value } = event.target;
-    if(value<0){
+    if (value < 0) {
       setQuantity({ ...quantity, [name]: 1 });
-    }
-    else{
+    } else {
       setQuantity({ ...quantity, [name]: value });
     }
-    store.dispatch(setLocalCart(quantity));
+    store.dispatch(setCart(quantity));
   };
 
   const deleteFromCart = (SKU) => {
@@ -45,15 +44,13 @@ const TableInventory = ({ elementos }) => {
       }
     });
     setQuantity(updatedCart);
-    if(Object.keys(updatedCart).length !== 0){
-       store.dispatch(setLocalCart(updatedCart));
-       setElementsInCart(newElements);
+    if (Object.keys(updatedCart).length !== 0) {
+      store.dispatch(setCart(updatedCart));
+      setElementsInCart(newElements);
+    } else {
+      store.dispatch(setCart(null));
+      setElementsInCart(null);
     }
-   else{
-    store.dispatch(setLocalCart(null))
-    setElementsInCart(null);
-   }
-    
   };
   const renderElements = () => {
     return elementsInCart.map((item) => {
@@ -86,22 +83,22 @@ const TableInventory = ({ elementos }) => {
     }, 0);
     return total;
   };
-  const purchaseELements=async()=>{
-    const cartItem = {productos:quantity, total: calculateTotal()}
-    try{
-      const response = await instance.post('/purchase', cartItem);
-      store.dispatch(setLocalCart(null));
+  const purchaseELements = async () => {
+    const cartItem = { productos: quantity, total: calculateTotal() };
+    try {
+      const response = await instance.post("/purchase", cartItem);
+      store.dispatch(setCart(null));
       const updatedHistory = await instance.get("/purchase-history");
       store.dispatch(setHistory(updatedHistory.data));
-      alert(response.data)
-      navigate('/')
-    }catch(e){
-      console.error(e)
+      alert(response.data);
+      navigate("/");
+    } catch (e) {
+      console.error(e);
     }
-  }
-  return (loading ? (
+  };
+  return loading ? (
     <LoadingSpinner />
-  ) : elementsInCart?(
+  ) : elementsInCart ? (
     <div>
       <table className="table-product">
         <thead>
@@ -121,6 +118,8 @@ const TableInventory = ({ elementos }) => {
         </div>
       </div>
     </div>
-  ):<>No hay elementos en el carrito</>);
+  ) : (
+    <>No hay elementos en el carrito</>
+  );
 };
 export default TableInventory;

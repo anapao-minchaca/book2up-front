@@ -5,13 +5,8 @@ import "./Cart.css";
 const Cart = () => {
   const [cart, setCart] = useState(null);
   useEffect(() => {
-    if (
-      window.localStorage.getItem("localCart") === "null" &&
-      window.localStorage.getItem("cart") !== "null"
-    ) {
+    if (window.localStorage.getItem("cart") !== "null") {
       setCart(JSON.parse(window.localStorage.getItem("cart")));
-    } else if (window.localStorage.getItem("localCart") !== "null") {
-      setCart(JSON.parse(window.localStorage.getItem("localCart")));
     } else {
       setCart(null);
     }
@@ -30,7 +25,7 @@ const Cart = () => {
     }
     return booksInCart;
   };
-  
+
   return (
     <div className="cart-area">
       {cart ? (
