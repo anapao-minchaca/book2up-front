@@ -5,6 +5,8 @@ import Pagination from "../Components/Pagination";
 import store from "../Store/store";
 import "./Books.css";
 import { setCart } from "../Store/slices/cartSlice";
+import swal from 'sweetalert';
+
 const Books = () => {
   const books = useSelector((state) => state.books);
   const localCart = useSelector((state) => state.cart);
@@ -17,7 +19,11 @@ const Books = () => {
     } else {
       store.dispatch(setCart({ ...localCartItems, [SKU]: 1 }));
     }
-    alert("Libro agregado al carrito");
+    //alert("Libro agregado al carrito");
+    swal({
+      text: "Libro agregado al carrito",
+      icon: "success",
+    });
   };
   const indexOfLastPost = currentPage * booksPerPage;
   const indexofFirstPost = indexOfLastPost - booksPerPage;

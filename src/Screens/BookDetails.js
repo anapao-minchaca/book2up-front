@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import store from "../Store/store";
 import { setCart } from "../Store/slices/cartSlice";
 import "./BookDetails.css";
+import swal from 'sweetalert';
+
 const BookDetails = () => {
   const { id } = useParams();
   const book =
@@ -22,7 +24,11 @@ const BookDetails = () => {
     } else {
       store.dispatch(setCart({ ...localCartItems, [SKU]: 1 }));
     }
-    alert("Libro agregado al carrito");
+    //alert("Libro agregado al carrito");
+    swal({
+      text: "Libro agregado al carrito",
+      icon: "success",
+    });
   };
   return (
     <div className="details-area">

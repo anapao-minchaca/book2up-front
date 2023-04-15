@@ -5,6 +5,8 @@ import instance from "../api/book2up";
 import { useNavigate } from "react-router-dom";
 import { setCart } from "../Store/slices/cartSlice";
 import { setHistory } from "../Store/slices/historySlice";
+import swal from 'sweetalert';
+
 const TableInventory = ({ elementos }) => {
   const [quantity, setQuantity] = useState(null);
   const navigate = useNavigate();
@@ -51,6 +53,10 @@ const TableInventory = ({ elementos }) => {
       store.dispatch(setCart(null));
       setElementsInCart(null);
     }
+    swal({
+      text: "El libro se ha eliminado del carrito",
+      icon: "info",
+    });
   };
   const renderElements = () => {
     return elementsInCart.map((item) => {
@@ -90,7 +96,11 @@ const TableInventory = ({ elementos }) => {
       store.dispatch(setCart(null));
       const updatedHistory = await instance.get("/purchase-history");
       store.dispatch(setHistory(updatedHistory.data));
-      alert(response.data);
+      swal({
+        text: response.data,
+        icon: "success",
+      });
+      //alert(response.data);
       navigate("/");
     } catch (e) {
       console.error(e);
