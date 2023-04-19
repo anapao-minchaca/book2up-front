@@ -8,24 +8,23 @@
   /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
   --first-color: hsl(127, 70%, 25%);
-  --second-color: hsl(160, 16%, 33%); 
+  --second-color: hsl(160, 16%, 33%);
   --title-color: hsl(244, 12%, 12%);
   --text-color: hsl(244, 4%, 36%);
   --body-color: hsl(67, 26%, 67%);
 
-  /* --green: hsl(155, 27%, 43%);
-  --green-darker: hsl(160, 16%, 33%); 
-  --otro-green: hsl(67, 26%, 67%); 
-  --another-green: hsl(127, 70%, 25%); 
-  --otro-green1: rgb(147, 161, 108);*/
-
+  --green: hsl(155, 27%, 43%);
+  --green-darker: hsl(160, 16%, 33%);
+  --otro-green: hsl(67, 26%, 67%);
+  --another-green: hsl(127, 70%, 25%);
+  --otro-green1: rgb(147, 161, 108);
 
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
   --body-font: "Poppins", sans-serif;
   --h2-font-size: 1.25rem;
-  --small-font-size: .813rem;
-  --smaller-font-size: .75rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
 
   /*========== Font weight ==========*/
   --font-medium: 500;
@@ -37,8 +36,8 @@
   :root {
     --h2-font-size: 1.75rem;
     --normal-font-size: 1rem;
-    --small-font-size: .875rem;
-    --smaller-font-size: .813rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
   }
 }
 
@@ -71,7 +70,7 @@ img {
 }
 
 /*=============== LOGIN FORM ===============*/
-.login__content, 
+.login__content,
 .login__form,
 .login__inputs {
   display: grid;
@@ -93,8 +92,8 @@ img {
 
 .login__form {
   position: relative;
-  background-color: hsla(244, 16%, 92%, .6);
-  border: 2px solid hsla(244, 16%, 92%, .75);
+  background-color: hsla(244, 16%, 92%, 0.6);
+  border: 2px solid hsla(244, 16%, 92%, 0.75);
   margin-inline: 1.5rem;
   row-gap: 1.25rem;
   backdrop-filter: blur(20px);
@@ -116,7 +115,7 @@ img {
 }
 
 .login__inputs {
-  row-gap: .4rem;
+  row-gap: 0.4rem;
   margin-bottom: 5px;
 }
 
@@ -132,14 +131,14 @@ img {
   padding: 14px 12px;
   border-radius: 6px;
   border: 2px solid var(--text-color);
-  background-color: hsla(244, 16%, 92%, .6);
+  background-color: hsla(244, 16%, 92%, 0.6);
   color: var(--title-color);
   font-size: var(--smaller-font-size);
   font-weight: var(--font-medium);
-  transition: border .4s;
+  transition: border 0.4s;
 }
 
-.login__input::placeholder{
+.login__input::placeholder {
   color: var(--text-color);
 }
 
@@ -160,7 +159,7 @@ img {
   width: max-content;
   height: max-content;
   position: absolute;
-  right: .75rem;
+  right: 0.75rem;
   top: 0;
   bottom: 0;
   margin: auto 0;
@@ -170,7 +169,7 @@ img {
 
 .login__check {
   display: flex;
-  column-gap: .5rem;
+  column-gap: 0.5rem;
   align-items: center;
 }
 
@@ -179,8 +178,8 @@ img {
   width: 16px;
   height: 16px;
   border: 2px solid var(--text-color);
-  background-color: hsla(244, 16%, 92%, .2);
-  border-radius: .25rem;
+  background-color: hsla(244, 16%, 92%, 0.2);
+  border-radius: 0.25rem;
 }
 
 .login__check-input:checked {
@@ -188,10 +187,10 @@ img {
 }
 
 .login__check-input:checked::before {
-  content: '✔';
+  content: "✔";
   display: block;
   color: #fff;
-  font-size: .75rem;
+  font-size: 0.75rem;
   transform: translate(1.5px, -2.5px);
 }
 
@@ -201,26 +200,24 @@ img {
 
 .login__buttons {
   display: flex;
-  column-gap: .75rem;
+  column-gap: 0.75rem;
 }
 
 .login__button {
   width: 100%;
   padding: 14px 2rem;
   border-radius: 6px;
-  background: linear-gradient(180deg,
-              var(--first-color),
-              var(--second-color));
+  background: linear-gradient(180deg, var(--first-color), var(--second-color));
   color: #fff;
   font-size: var(--small-font-size);
   font-weight: var(--font-semi-bold);
-  box-shadow: 0 6px 24px hsla(244, 75%, 48%, .5);
+  box-shadow: 0 6px 24px hsla(244, 75%, 48%, 0.5);
   margin-bottom: 1rem;
   cursor: pointer;
 }
 
 .login__button-ghost {
-  background: hsla(244, 16%, 92%, .6);
+  background: hsla(244, 16%, 92%, 0.6);
   border: 2px solid var(--first-color);
   color: var(--first-color);
   box-shadow: none;
@@ -264,7 +261,7 @@ img {
 
   .login__img {
     border-radius: 3.5rem;
-    box-shadow: 0 24px 48px hsla(244, 75%, 36%, .45)
+    box-shadow: 0 24px 48px hsla(244, 75%, 36%, 0.45);
   }
 
   .login__form {
@@ -281,7 +278,7 @@ img {
   .login__form {
     padding: 3rem;
     border-radius: 1.25rem;
-    border: 2.5px solid hsla(244, 16%, 92%, .75)
+    border: 2.5px solid hsla(244, 16%, 92%, 0.75);
   }
 
   .login__description,
@@ -292,7 +289,7 @@ img {
 
   .login__inputs {
     row-gap: 0.4rem;
-    margin-bottom: .75rem;
+    margin-bottom: 0.75rem;
   }
 
   .login__input {

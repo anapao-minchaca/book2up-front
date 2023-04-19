@@ -2,8 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Login from "./Screens/Login";
-import Home from "./Screens/Home";
+import NewLogin from "./Screens/NewLogin";
 import Books from "./Screens/Books";
 import Navigation from "./Components/Navigation";
 import instance from "./api/book2up";
@@ -15,7 +14,6 @@ import BookDetails from "./Screens/BookDetails";
 import Cart from "./Screens/Cart";
 import History from "./Screens/History";
 import LoadingSpinner from "./Components/LoadingSpinner";
-import SignUp from "./Screens/SignUp";
 function App() {
   const { token } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
@@ -42,9 +40,7 @@ function App() {
     return (
       <div className="">
         <Routes>
-          <Route path="*" element={<Home />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/signup" element={<SignUp />} />
+          <Route path="*" element={<NewLogin />} />
         </Routes>
       </div>
     );
