@@ -50,7 +50,7 @@ function App() {
         {loading ? (
           <LoadingSpinner centered />
         ) : (
-          <>
+          <div className="Aaapp">
             <Navigation />
             <Routes>
               <Route exact path="/" element={<Books />} />
@@ -58,7 +58,7 @@ function App() {
               <Route exact path="/cart" element={<Cart />} />
               <Route exact path="/history" element={<History />} />
             </Routes>
-          </>
+          </div>
         )}
       </div>
     );
