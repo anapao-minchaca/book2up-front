@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import store from "../Store/store";
 import { setCart } from "../Store/slices/cartSlice";
 import "./BookDetails.css";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -17,6 +17,8 @@ const BookDetails = () => {
   useEffect(() => {
     window.localStorage.setItem("book", JSON.stringify(book));
   }, [id, book]);
+
+  console.log(book);
 
   const comprarLibro = async (SKU) => {
     if (localCartItems === null) {
@@ -31,21 +33,26 @@ const BookDetails = () => {
     });
   };
   return (
-    <div className="details-area">
-      <div className="left-container">
-        <img src={book.img} alt={book.titulo} />
-      </div>
-      <div className="right-container">
-        <div>
-          <p>Titulo: {book.titulo}</p>
-          <p>Autor: {book.autor}</p>
-          <p>Sinopsis:{book.sin}</p>
-          <p>Precio: {`$${book.precio}`}</p>
-        </div>
-        <div>
-          <button onClick={() => comprarLibro(book.SKU)} disabled={disable}>
-            {disable ? "En carrito" : "Comprar"}
-          </button>
+    <div className="books-details-wrap">
+      <div className="box-books">
+        <div className="inner-box-books">
+          <div className="left-container">
+            <img src={book.img} alt={book.titulo} />
+          </div>
+          <div className="middle-container">
+            <div>
+              <p>Titulo: {book.titulo}</p>
+              <p>Autor: {book.autor}</p>
+              <p>Sinopsis:{book.sin}</p>
+              <p>Precio: {`$${book.precio}`}</p>
+            </div>
+            <div>
+              <button onClick={() => comprarLibro(book.SKU)} disabled={disable}>
+                {disable ? "En carrito" : "Comprar"}
+              </button>
+            </div>
+          </div>
+          <div className="right-container"></div>
         </div>
       </div>
     </div>

@@ -65,6 +65,7 @@ const Books = () => {
         postPerPage={booksPerPage}
         totalPosts={books.length}
         paginate={paginate}
+        currentPage={currentPage}
       />
     </>
   );

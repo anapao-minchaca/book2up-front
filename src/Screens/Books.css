@@ -9,7 +9,7 @@
 }
 .book-display {
   position: relative;
-  width: 350px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,8 +23,8 @@
 .card {
   background-color: #c8d7bc;
   text-align: center;
-  height: 250px;
-  width: 270px;
+  height: 270px;
+  width: 300px;
   border-radius: 16px;
   margin-top: 40px;
 }
@@ -35,8 +35,8 @@
 
 .info {
   width: 100%;
-  margin: 0px 0px;
-  padding: 10px 0px 0px 38px;
+  margin: 10px 0px 0px 0px;
+  padding: 10px 0px 0px 50px;
   font-family: "Poppins";
 }
 
@@ -61,7 +61,7 @@
 
 .image {
   width: 150px;
-  height: 220px;
+  height: 240px;
   margin-bottom: 100px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;

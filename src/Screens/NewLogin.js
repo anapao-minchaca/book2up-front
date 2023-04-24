@@ -29,8 +29,6 @@ const NewLogin = () => {
 
   const changeForm = (event, methodUseState, objectToChange) => {
     const { name, value } = event.target;
-
-    console.log("Name: " + name + " Value: " + value);
     methodUseState({ ...objectToChange, [name]: value });
   };
 
@@ -52,13 +50,13 @@ const NewLogin = () => {
     try {
       const response = await instance.post("/validar", { user, password });
       store.dispatch(setToken(response.data));
+      console.log("");
       navigate("/");
     } catch (e) {
       alert(e);
     }
   };
   const submitForm = async () => {
-    console.log(form.name);
     try {
       const response = await instance.post("/signup", form);
       store.dispatch(setToken(response.data));
@@ -124,7 +122,6 @@ const NewLogin = () => {
                     type="password"
                     name="password"
                     className={styleInputPassI}
-                    minLength={4}
                     onChange={(event) =>
                       changeForm(event, setFormInfo, formInfo)
                     }
