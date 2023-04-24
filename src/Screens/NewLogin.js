@@ -50,7 +50,6 @@ const NewLogin = () => {
     try {
       const response = await instance.post("/validar", { user, password });
       store.dispatch(setToken(response.data));
-      console.log("");
       navigate("/");
     } catch (e) {
       alert(e);
@@ -143,7 +142,7 @@ const NewLogin = () => {
                   <label>Password</label>
                 </div>
                 <input
-                  type="submit"
+                  type="button"
                   value="Sign In"
                   className="sign-btn"
                   onClick={submit}
@@ -251,7 +250,7 @@ const NewLogin = () => {
                   <label>Password</label>
                 </div>
                 <input
-                  type="submit"
+                  type="button"
                   value="Sign Up"
                   className="sign-btn"
                   onClick={submitForm}
