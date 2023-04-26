@@ -1,87 +1,222 @@
 .books-details-wrap {
   width: 100%;
-  height: 800px;
+  height: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 30px;
-  margin-top: 0px;
+  overflow: visible;
 }
 
-.books-details-wrap .box-books {
-  position: relative;
-  height: 70%;
-  width: 100%;
-  background-color: antiquewhite;
+.books-details-wrap .card-background {
   display: flex;
+  width: 100%;
 }
 
+.books-details-wrap .card-background .box-books {
+  height: 85%;
+  width: 100%;
+  background-color: var(--green-darker);
+}
+.books-details-wrap .box-books .inner-box-books .left-container + hr {
+  display: none;
+}
+.books-details-wrap .box-books .inner-box-books .middle-container + hr {
+  display: none;
+}
 .books-details-wrap .box-books .inner-box-books {
-  position: absolute;
-  width: calc(100% - 4.1rem);
-  height: calc(100% - 4.1rem);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: grid;
+
+  gap: 0.5rem;
+  grid-template-columns: 25% 51% 22%;
+  margin-top: 100px;
+  width: calc(100%);
+  height: calc(100%);
 }
+
 .books-details-wrap .box-books .inner-box-books .left-container {
-  position: absolute;
   height: 100%;
-  width: 30%;
-  top: 0;
-  left: 0;
-  background-color: rgba(102, 51, 153, 0.5);
+  display: flex;
+
+  justify-content: center;
 }
+
 .books-details-wrap .left-container img {
-  width: 400px;
-  height: 650px;
+  width: 350px;
+  height: 600px;
   border-radius: 10px;
-  margin-left: 80px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  transition: 0.3s;
 }
+
 .books-details-wrap .box-books .inner-box-books .middle-container {
-  position: absolute;
+  font-family: "Poppins";
   height: 100%;
-  width: 45%;
-  top: 0;
-  left: 30%;
-  background-color: red;
+}
+
+.middle-container .author {
+  color: #d8d8d8;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+.middle-container .title {
+  color: #fff;
+  font-size: 1.9rem;
+  font-weight: 600;
+}
+.middle-container .rating {
+  display: flex;
+  margin-top: 10px;
+}
+
+.middle-container .rating .no_rating {
+  color: #d8d8d8;
+  margin-left: 10px;
+  font-size: 0.8rem;
+}
+
+.middle-container .sinopsis {
+  color: #d8d8d8;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.middle-container .buttons-area {
+  margin-top: 20px;
+  display: flex;
+  gap: 1rem;
 }
 
 .books-details-wrap .box-books .inner-box-books .right-container {
-  position: absolute;
+  font-family: "Poppins";
   height: 100%;
-  width: 25%;
-  top: 0;
-  left: 75%;
-  background-color: aqua;
+  margin-left: 20px;
 }
+.vertical-divider {
+  position: absolute;
+  width: 100px;
+  height: 400px;
+  right: 0;
+  left: 71.5%;
+  color: white;
+  display: block !important;
+}
+.right-container .title {
+  color: #c3c3c3;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.right-container .texto-libro-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 250px;
+}
+.right-container .book-text-pair {
+  display: flex;
+  font-size: 1rem;
+}
+
+.right-container .book-text-pair .negritas {
+  color: #fff;
+  font-weight: 600;
+}
+.right-container .book-text-pair .texto {
+  margin-left: 10px;
+  color: #fff;
+}
+/*RESPÓNSIVE CODE*/
+@media (max-width: 1550px) {
+  .books-details-wrap .left-container img {
+    width: 300px;
+    height: 525px;
+  }
+  .vertical-divider {
+    left: 70%;
+  }
+}
+
 @media (max-width: 1250px) {
-  .books-details-wrap .box-books {
-    flex-direction: row;
+  .books-details-wrap .box-books .inner-box-books .middle-container + hr {
+    display: block;
+    margin-top: 10px;
   }
-  .books-details-wrap .box-books .inner-box-books .left-container {
-    position: relative;
-    display: flex;
+  .books-details-wrap .card-background {
     height: 100%;
-    width: 100%;
-    justify-content: center;
-    top: 0;
-    left: 0;
   }
-  .books-details-wrap .box-books .inner-box-books .middle-container {
-    position: relative;
+  .vertical-divider {
+    display: none !important;
+  }
+  .books-details-wrap .box-books .inner-box-books {
+    grid-template-columns: 35% 60%;
     height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
+    margin-top: 50px;
   }
   .books-details-wrap .box-books .inner-box-books .right-container {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
+    padding-top: 20px;
+    grid-column: span 2;
+    min-height: 182px;
+  }
+  .middle-container .author {
+    color: #d8d8d8;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .middle-container .title {
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+  .middle-container .sinopsis {
+    color: #d8d8d8;
+    font-size: 0.9rem;
+  }
+  .middle-container .buttons-area {
+    font-size: 0.5rem;
+  }
+  .right-container .texto-libro-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    height: 100px;
+  }
+}
+
+@media (max-width: 850px) {
+  .books-details-wrap {
+    background-color: var(--green-darker);
+  }
+  .books-details-wrap .box-books .inner-box-books {
+    grid-template-columns: 100%;
+    margin-top: 50px;
+  }
+  .right-container .texto-libro-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .books-details-wrap .box-books .inner-box-books .right-container {
+    grid-column: span 1;
+    min-height: 200px;
+    padding: 10px 10px 10px 10px;
+    margin-left: 0px;
+  }
+  .books-details-wrap .box-books .inner-box-books .middle-container {
+    margin-top: 10px;
+    padding: 20px 10px 10px 10px;
+  }
+  .right-container .texto-libro-container {
+    height: 90px;
+  }
+  .books-details-wrap .box-books .inner-box-books .left-container + hr {
+    display: block;
+    width: 80%;
+    margin: 10px auto auto auto;
+    border-color: #c3c3c3;
+  }
+  .books-details-wrap .box-books .inner-box-books .middle-container + hr {
+    width: 80%;
+    margin: 10px auto auto auto;
+    border-color: #c3c3c3;
   }
 }
