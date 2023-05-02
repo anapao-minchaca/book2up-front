@@ -7,11 +7,13 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Logout from "@mui/icons-material/Logout";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Menu from "@mui/material/Menu";
+import ModalCart from "./ModalCart";
 import MenuItem from "@mui/material/MenuItem";
 import store from "../Store/store";
 import { Link } from "react-router-dom";
 import { removeToken } from "../Store/slices/authSlice";
 import { removeCart } from "../Store/slices/cartSlice";
+import Popover from "@mui/material/Popover";
 
 import "./Navigation.css";
 
@@ -19,6 +21,15 @@ const Navigation = () => {
   const matches = useMediaQuery("(max-width:530px)");
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
+  const [anchorEl2, setAnchorEl2] = React.useState(null);
+  const open2 = Boolean(anchorEl2);
+  const handleClick2 = (event) => {
+    setAnchorEl2(event.currentTarget);
+  };
+  const handleClose2 = () => {
+    setAnchorEl2(null);
+  };
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -42,17 +53,32 @@ const Navigation = () => {
 
       <div className="avatar-container">
         <div className="shopping-cart-logo">
-          <Link to="/cart">
-            <IconButton aria-label="delete">
-              <ShoppingCartCheckoutIcon
-                sx={
-                  matches
-                    ? { width: 28, height: 28 }
-                    : { width: 36, height: 36 }
-                }
-              />
-            </IconButton>
-          </Link>
+          <IconButton aria-label="cart" onClick={handleClick2}>
+            <ShoppingCartCheckoutIcon
+              sx={
+                matches ? { width: 28, height: 28 } : { width: 36, height: 36 }
+              }
+            />
+          </IconButton>
+
+          <Popover
+            open={open2}
+            anchorEl={anchorEl2}
+            onClose={handleClose2}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            PaperProps={{ style: { borderRadius: "20px" } }}
+          >
+            <ModalCart />
+          </Popover>
         </div>
         <IconButton
           id="account-menu"

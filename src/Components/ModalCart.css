@@ -1,0 +1,62 @@
+.main-container {
+  width: 450px;
+  height: 700px;
+}
+.tooltip-top::before {
+  border-radius: 50px !important;
+}
+.main-container .modal-header {
+  font-family: "Poppins";
+  display: flex;
+  justify-content: space-between;
+}
+.main-container .modal-header .modal-title {
+  font-size: 1.35rem;
+  margin-left: 20px;
+  margin-top: 12px;
+  font-weight: 500;
+}
+.main-container .modal-header .button-go-checkout {
+  font-family: "Poppins" !important;
+  margin-right: 15px;
+  margin-top: 8px;
+  text-transform: capitalize !important;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  font-weight: 100;
+}
+.main-container .modal-hr {
+  width: 80%;
+  margin: 10px auto auto auto;
+  height: 1px;
+  background-color: #dadada;
+  border: none;
+}
+
+.main-container .product-display-cart .product-display-box {
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  margin: 15px 15px 5px 15px;
+  display: flex;
+}
+.main-container
+  .product-display-cart
+  .product-display-box
+  .product-display-item {
+  width: 100%;
+}
+
+.no-items {
+  margin: 10px 10px 10px 10px;
+}
+
+@media only screen and (max-width: 500px) {
+  .main-container {
+    width: 400px;
+    height: 600px;
+  }
+  .main-container .modal-header .modal-title {
+    font-size: 1.25rem;
+  }
+}

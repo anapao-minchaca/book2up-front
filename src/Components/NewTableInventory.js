@@ -5,13 +5,17 @@ import instance from "../api/book2up";
 import { useNavigate } from "react-router-dom";
 import { setCart } from "../Store/slices/cartSlice";
 import { setHistory } from "../Store/slices/historySlice";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import "./NewTableInventory.css";
 import swal from "sweetalert";
 
-const TableInventory = ({ elementos }) => {
+const NewTableInventory = ({ elementos }) => {
   const [quantity, setQuantity] = useState(null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [elementsInCart, setElementsInCart] = useState(elementos);
+
   useEffect(() => {
     setLoading(true);
     let object = {};
@@ -21,16 +25,6 @@ const TableInventory = ({ elementos }) => {
     setQuantity(object);
     setLoading(false);
   }, [elementos]);
-
-  const changeValue = (event) => {
-    const { name, value } = event.target;
-    if (value < 0) {
-      setQuantity({ ...quantity, [name]: 1 });
-    } else {
-      setQuantity({ ...quantity, [name]: value });
-    }
-    store.dispatch(setCart(quantity));
-  };
 
   const deleteFromCart = (SKU) => {
     let newElements = [];
@@ -58,37 +52,14 @@ const TableInventory = ({ elementos }) => {
       icon: "info",
     });
   };
-  const renderElements = () => {
-    return elementsInCart.map((item) => {
-      return (
-        <tr key={item.SKU}>
-          <td className="table-element">{item.titulo}</td>
-          <td className="table-element">
-            <input
-              type="number"
-              name={item.SKU}
-              min="1"
-              max="10"
-              value={quantity ? quantity[item.SKU] : 1}
-              onChange={changeValue}
-            />
-          </td>
-          <td className="table-element">
-            {quantity ? quantity[item.SKU] * item.precio : item.precio}
-          </td>
-          <td className="table-element">
-            <button onClick={() => deleteFromCart(item.SKU)}>Eliminar</button>
-          </td>
-        </tr>
-      );
-    });
-  };
+
   const calculateTotal = () => {
     const total = elementsInCart.reduce((valorAnterior, valorActual) => {
       return valorAnterior + valorActual.precio * quantity[valorActual.SKU];
     }, 0);
     return total;
   };
+
   const purchaseELements = async () => {
     const cartItem = { productos: quantity, total: calculateTotal() };
     try {
@@ -106,30 +77,43 @@ const TableInventory = ({ elementos }) => {
       console.error(e);
     }
   };
+
+  const renderElements = () => {
+    return elementsInCart.map((item) => {
+      return (
+        <div key={item.SKU} className="item-container">
+          <hr className="modal-hr" />
+          <div className="item-subcontainer">
+            <div className="item-img">
+              <img alt="cover" src={item.img} />
+            </div>
+            <div className="item-description">
+              <div className="item-autor">{item.author}</div>
+              <div className="item-titulo">{item.titulo}</div>
+              <div className="price-edit">
+                <div className="item-price">{`$ ${item.precio}`}</div>
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => {
+                    deleteFromCart(item.SKU);
+                  }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  };
+
   return loading ? (
     <LoadingSpinner />
   ) : elementsInCart ? (
-    <div>
-      <table className="table-product">
-        <thead>
-          <tr>
-            <th className="table-element">Titulo</th>
-            <th className="table-element">cantidad</th>
-            <th className="table-element">Subtotal</th>
-          </tr>
-        </thead>
-        <tbody>{renderElements()}</tbody>
-      </table>
-
-      <div className="payment">
-        <div>{quantity ? `Total a pagar $${calculateTotal()}` : "0"}</div>
-        <div>
-          <button onClick={() => purchaseELements()}>Pagar</button>
-        </div>
-      </div>
-    </div>
+    <div className="cart-zone-items">{renderElements()}</div>
   ) : (
-    <>No hay elementos en el carrito</>
+    <div className="no-items">No Items In Cart</div>
   );
 };
-export default TableInventory;
+export default NewTableInventory;

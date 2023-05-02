@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Pagination from "../Components/Pagination";
-//import store from "../Store/store";
 import "./Books.css";
+// import store from "../Store/store";
+
 // import { setCart } from "../Store/slices/cartSlice";
 // import swal from "sweetalert";
 
 const Books = () => {
   const books = useSelector((state) => state.books);
-  //const localCart = useSelector((state) => state.cart);
-  //const localCartItems = localCart.cart;
+  // const localCart = useSelector((state) => state.cart);
+  // const localCartItems = localCart.cart;
   const [currentPage, setCurrentPage] = useState(1);
   const booksPerPage = 12;
 

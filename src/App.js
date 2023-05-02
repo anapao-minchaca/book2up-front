@@ -8,10 +8,9 @@ import Navigation from "./Components/Navigation";
 import instance from "./api/book2up";
 import store from "./Store/store";
 import { setBooks } from "./Store/slices/booksSlice";
-import { setCart } from "./Store/slices/cartSlice";
 import { setHistory } from "./Store/slices/historySlice";
 import BookDetails from "./Screens/BookDetails";
-import Cart from "./Screens/Cart";
+import Checkout from "./Screens/Checkout";
 import History from "./Screens/History";
 import LoadingSpinner from "./Components/LoadingSpinner";
 function App() {
@@ -23,8 +22,9 @@ function App() {
       try {
         const response = await instance.get("/bookdata");
         store.dispatch(setBooks(response.data));
-        const cart = await instance.get("/cartdata");
-        store.dispatch(setCart(cart.data.length === 0 ? null : cart.data));
+        //const cart = await instance.get("/cartdata");
+        //console.log(cart);
+        //store.dispatch(setCart(cart.data.length === 0 ? null : cart.data));
         const purchaseHistory = await instance.get("/purchase-history");
         store.dispatch(setHistory(purchaseHistory.data));
       } catch (e) {
@@ -50,12 +50,12 @@ function App() {
         {loading ? (
           <LoadingSpinner centered />
         ) : (
-          <div className="Aaapp">
+          <div>
             <Navigation />
             <Routes>
               <Route exact path="/" element={<Books />} />
               <Route exact path="/book/:id" element={<BookDetails />} />
-              <Route exact path="/cart" element={<Cart />} />
+              <Route exact path="/checkout" element={<Checkout />} />
               <Route exact path="/history" element={<History />} />
             </Routes>
           </div>

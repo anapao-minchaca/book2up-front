@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import store from "../Store/store";
@@ -72,7 +72,8 @@ const BookDetails = () => {
                 <div className="rating">
                   <Rating
                     name="half-rating"
-                    defaultValue={book.rating}
+                    defaultValue={1}
+                    value={Number(book.rating)}
                     precision={0.1}
                     readOnly
                     size="small"
@@ -85,7 +86,7 @@ const BookDetails = () => {
               <div className="buttons-area">
                 <ColorButton
                   onClick={() => comprarLibro(book.SKU)}
-                  disabled={disable}
+                  disabled={disable ? true : false}
                   variant="contained"
                   size={matches ? "small" : "medium"}
                   startIcon={<AddShoppingCartIcon />}
