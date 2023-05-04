@@ -69,7 +69,7 @@ const NewLogin = () => {
       <div className="box">
         <div className="inner-box">
           <div className="forms-wrap">
-            <form autoComplete="off" className="sign-in-form">
+            <form autoComplete="off" className="sign-in-form login">
               <div className="logo">
                 <img src={logo} alt="logo" />
                 <h4>Book2Up</h4>
@@ -113,7 +113,7 @@ const NewLogin = () => {
                       )
                     }
                   />
-                  <label>User</label>
+                  <label className="label-login">User</label>
                 </div>
 
                 <div className="input-wrap">
@@ -139,7 +139,7 @@ const NewLogin = () => {
                       )
                     }
                   />
-                  <label>Password</label>
+                  <label className="label-login">Password</label>
                 </div>
                 <input
                   type="button"
@@ -155,7 +155,7 @@ const NewLogin = () => {
               </div>
             </form>
 
-            <form autoComplete="off" className="sign-up-form">
+            <form autoComplete="off" className="sign-up-form login">
               <div className="logo">
                 <img src={logo} alt="logo" />
                 <h4>Book2Up</h4>
@@ -197,7 +197,7 @@ const NewLogin = () => {
                       )
                     }
                   />
-                  <label>User</label>
+                  <label className="label-login">User</label>
                 </div>
 
                 <div className="input-wrap">
@@ -222,7 +222,7 @@ const NewLogin = () => {
                       )
                     }
                   />
-                  <label>Name</label>
+                  <label className="label-login">Name</label>
                 </div>
 
                 <div className="input-wrap">
@@ -247,7 +247,7 @@ const NewLogin = () => {
                       )
                     }
                   />
-                  <label>Password</label>
+                  <label className="label-login">Password</label>
                 </div>
                 <input
                   type="button"

@@ -53,17 +53,17 @@ body {
   color: var(--text-color);
 }
 
-input,
+/* input,
 button {
   font-family: var(--body-font);
   border: none;
   outline: none;
-}
+} */
 
-img {
+/* img {
   max-width: 100%;
   height: auto;
-}
+} */
 
 .container {
   background-color: var(--body-color);

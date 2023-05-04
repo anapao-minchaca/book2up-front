@@ -7,17 +7,14 @@ const History = () => {
   const mapObject = (cart) => {
     let elements = [];
 
-    const { productos ,total} = cart;
+    const { productos, total } = cart;
     for (let producto in productos) {
       let libro = books.find((book) => book.SKU === producto);
-      if(libro){
-        elements.push({ ...libro, cantidad: productos[producto] });
-      }
-      else{
-        elements.push({ titulo:producto, cantidad:1 });
+      if (libro) {
+        elements.push({ ...libro });
       }
     }
-    elements.push(total);
+    //elements.push(total);
     return elements;
   };
 
@@ -40,8 +37,28 @@ const History = () => {
       );
     });
   };
+
+  const renderHistoryV2 = () => {
+    return purchasedHistory.map((purchase, indice) => {
+      const elementsInCart = mapObject(purchase);
+      return (
+        <React.Fragment key={indice}>
+          {elementsInCart.map((element, index) => {
+            return (
+              <li key={index}>
+                <img alt="book" src={element.img} />
+              </li>
+            );
+          })}
+        </React.Fragment>
+      );
+    });
+  };
+
   return purchasedHistory.length > 0 ? (
-    <div className="history-container">{renderHistory()}</div>
+    <div className="history-container">
+      <ul>{renderHistoryV2()}</ul>
+    </div>
   ) : (
     <div className="no-history">No has realizado ninguna compra</div>
   );

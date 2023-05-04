@@ -49,6 +49,7 @@ const ModalCart = () => {
         >
           <Link
             to="/checkout"
+            state={getBooksInCart()}
             style={{ textDecoration: "none", listStyleType: "none" }}
           >
             Checkout{" "}
