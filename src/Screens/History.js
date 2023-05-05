@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import "./History.css";
 const History = () => {
@@ -46,10 +47,11 @@ const History = () => {
       return (
         <React.Fragment key={indice}>
           {elementsInCart.map((element, index) => {
-            console.log(element.titulo);
             return (
               <li key={index}>
-                <img alt="book" src={element.img} className="book-img-hist" />
+                <Link to="/epub-viewer">
+                  <img alt="book" src={element.img} className="book-img-hist" />
+                </Link>
               </li>
             );
           })}

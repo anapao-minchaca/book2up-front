@@ -13,6 +13,7 @@ import BookDetails from "./Screens/BookDetails";
 import Checkout from "./Screens/Checkout";
 import History from "./Screens/History";
 import LoadingSpinner from "./Components/LoadingSpinner";
+import EpubScreen from "./Screens/EpubScreen";
 function App() {
   const { token } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
@@ -57,6 +58,7 @@ function App() {
               <Route exact path="/book/:id" element={<BookDetails />} />
               <Route exact path="/checkout" element={<Checkout />} />
               <Route exact path="/history" element={<History />} />
+              <Route exact path="/epub-viewer" element={<EpubScreen />} />
             </Routes>
           </div>
         )}

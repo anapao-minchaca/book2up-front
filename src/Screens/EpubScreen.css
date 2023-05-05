@@ -1,0 +1,16 @@
+.epub-container {
+  margin-top: 2px;
+  height: calc(100vh - 105px);
+}
+
+.epub-pages {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1rem;
+  left: 1rem;
+  text-align: center;
+  z-index: 2;
+  height: 10px;
+  font-size: 1rem;
+  color: black;
+}

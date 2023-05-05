@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LoadingSpinner from "./LoadingSpinner";
 import store from "../Store/store";
-import instance from "../api/book2up";
-import { useNavigate } from "react-router-dom";
 import { setCart } from "../Store/slices/cartSlice";
-import { setHistory } from "../Store/slices/historySlice";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./NewTableInventory.css";
@@ -12,7 +9,7 @@ import swal from "sweetalert";
 
 const NewTableInventory = ({ elementos }) => {
   const [quantity, setQuantity] = useState(null);
-  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
   const [elementsInCart, setElementsInCart] = useState(elementos);
 
@@ -51,31 +48,6 @@ const NewTableInventory = ({ elementos }) => {
       text: "El libro se ha eliminado del carrito",
       icon: "info",
     });
-  };
-
-  const calculateTotal = () => {
-    const total = elementsInCart.reduce((valorAnterior, valorActual) => {
-      return valorAnterior + valorActual.precio * quantity[valorActual.SKU];
-    }, 0);
-    return total;
-  };
-
-  const purchaseELements = async () => {
-    const cartItem = { productos: quantity, total: calculateTotal() };
-    try {
-      const response = await instance.post("/purchase", cartItem);
-      store.dispatch(setCart(null));
-      const updatedHistory = await instance.get("/purchase-history");
-      store.dispatch(setHistory(updatedHistory.data));
-      swal({
-        text: response.data,
-        icon: "success",
-      });
-      //alert(response.data);
-      navigate("/");
-    } catch (e) {
-      console.error(e);
-    }
   };
 
   const renderElements = () => {
