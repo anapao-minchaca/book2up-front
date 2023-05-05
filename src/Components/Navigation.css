@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+
 nav {
   background-color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
@@ -7,7 +9,13 @@ nav {
   align-items: center;
   justify-content: space-between;
 }
-
+.screen-title {
+  font-family: "Special Elite", cursive;
+  font-size: 1.6rem;
+  color: var(--green-darker);
+  font-weight: 600;
+  padding-right: 40px;
+}
 .header img {
   float: left;
   width: 200px;
@@ -33,7 +41,23 @@ nav {
   padding-top: 10px;
   padding-right: 25px;
 }
+
+@media (max-width: 700px) {
+  .screen-title {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    padding-right: 20px;
+  }
+  .header img {
+    width: 150px;
+    height: 70px;
+  }
+}
+
 @media (max-width: 530px) {
+  .screen-title {
+    font-size: 1rem;
+  }
   .header img {
     width: 150px;
     height: 70px;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
@@ -10,7 +10,7 @@ import Menu from "@mui/material/Menu";
 import ModalCart from "./ModalCart";
 import MenuItem from "@mui/material/MenuItem";
 import store from "../Store/store";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { removeToken } from "../Store/slices/authSlice";
 import { removeCart } from "../Store/slices/cartSlice";
 import Popover from "@mui/material/Popover";
@@ -18,6 +18,26 @@ import Popover from "@mui/material/Popover";
 import "./Navigation.css";
 
 const Navigation = () => {
+  const location = useLocation();
+  const [descTitle, setDescTitle] = useState("BOOKSTORE");
+
+  // The current location.
+  console.log(location.pathname);
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setDescTitle("BOOKSTORE");
+    } else if (location.pathname === "/checkout") {
+      setDescTitle("CHECKOUT");
+    } else if (location.pathname === "/history") {
+      setDescTitle("MY BOOKS");
+    } else if (location.pathname === "/epub-viewer") {
+      setDescTitle("EPUB VIEWER");
+    } else {
+      setDescTitle("BOOK DETAILS");
+    }
+  }, [location.pathname]);
+
   const matches = useMediaQuery("(max-width:530px)");
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -50,7 +70,7 @@ const Navigation = () => {
           />
         </Link>
       </div>
-
+      <div className="screen-title">{descTitle}</div>
       <div className="avatar-container">
         <div className="shopping-cart-logo">
           <IconButton aria-label="cart" onClick={handleClick2}>

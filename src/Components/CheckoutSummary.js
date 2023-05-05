@@ -24,8 +24,6 @@ const CheckoutSummary = ({ checkoutSummary }) => {
     setLoading(false);
   }, [checkoutSummary]);
 
-  console.log(quantity);
-
   const deleteFromCart = (SKU) => {
     let newElements = [];
     let updatedCart = {};
@@ -62,9 +60,9 @@ const CheckoutSummary = ({ checkoutSummary }) => {
   };
 
   const renderElements = () => {
-    return elementsInCart.map((item) => {
+    return elementsInCart.map((item, index) => {
       return (
-        <div className="product-card">
+        <div className="product-card" key={index}>
           <div className="checkout-card">
             <div className="img-box">
               <img
