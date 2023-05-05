@@ -46,11 +46,11 @@ function App() {
     );
   } else {
     return (
-      <div className="">
+      <div className="App">
         {loading ? (
           <LoadingSpinner centered />
         ) : (
-          <div>
+          <div className="App-container">
             <Navigation />
             <Routes>
               <Route exact path="/" element={<Books />} />
