@@ -22,8 +22,6 @@ const Navigation = () => {
   const [descTitle, setDescTitle] = useState("BOOKSTORE");
 
   // The current location.
-  console.log(location.pathname);
-
   useEffect(() => {
     if (location.pathname === "/") {
       setDescTitle("BOOKSTORE");
